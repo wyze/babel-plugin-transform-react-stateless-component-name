@@ -2,6 +2,7 @@
 
 [![Build Status][travis-image]][travis-url]
 [![npm][npm-image]][npm-url]
+[![Codecov.io][codecov-image]][codecov-url]
 
 > Adds a display name to the stateless component in the React Dev Tools.
 
@@ -74,3 +75,6 @@ Released under the MIT license. See [license](license) for details.
 
 [npm-image]: https://img.shields.io/npm/v/babel-plugin-transform-react-stateless-component-name.svg?style=flat-square
 [npm-url]: https://npmjs.com/package/babel-plugin-transform-react-stateless-component-name
+
+[codecov-image]: https://img.shields.io/codecov/c/github/wyze/babel-plugin-transform-react-stateless-component-name.svg?style=flat-square
+[codecov-url]: https://codecov.io/github/wyze/babel-plugin-transform-react-stateless-component-name
