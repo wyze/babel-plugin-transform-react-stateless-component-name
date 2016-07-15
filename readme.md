@@ -8,33 +8,33 @@
 
 ## Example
 
-```javascript
+```js
 // App.jsx
-import React from 'react';
+import React from 'react'
 
 export default () => (
   <h1>Hello World!</h1>
-);
+)
 
 // index.js
 import App from './App'
-import React from 'react';
-import { render } from 'react-dom';
+import React from 'react'
+import { render } from 'react-dom'
 
-render(<App />, document.getElementById('root'));
+render(<App />, document.getElementById('root'))
 ```
 
 ### Before
 
-![Before](media/before.png)
+![Before](.github/media/before.png)
 
 ### After
 
-![After](media/after.png)
+![After](.github/media/after.png)
 
 ## Installation
 
-```sh
+```
 $ npm install babel-plugin-transform-react-stateless-component-name
 ```
 
@@ -46,27 +46,31 @@ $ npm install babel-plugin-transform-react-stateless-component-name
 
 ```json
 {
-  "plugins": ["transform-react-stateless-component-name"]
+  "plugins": [
+    "transform-react-stateless-component-name"
+  ]
 }
 ```
 
 ### Via CLI
 
-```sh
+```
 $ babel --plugins transform-react-stateless-component-name script.js
 ```
 
 ### Via Node API
 
-```javascript
-require("babel-core").transform("code", {
-  plugins: ["transform-react-stateless-component-name"]
-});
+```js
+require('babel-core').transform('code', {
+  plugins: [
+    'transform-react-stateless-component-name',
+  ],
+})
 ```
 
 ## License
 
-Copyright © 2015 [Neil Kistner](//github.com/wyze)
+Copyright © 2015-2016 [Neil Kistner](//github.com/wyze)
 
 Released under the MIT license. See [license](license) for details.
 
