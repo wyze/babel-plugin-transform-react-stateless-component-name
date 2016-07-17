@@ -12,7 +12,11 @@ export const doesReturnJSX = ({ body }) => {
   const block = body.body
 
   if ( block.length ) {
-    return isTypeJSX(block.slice(0).pop().argument)
+    const lastBlock = block.slice(0).pop()
+
+    if ( lastBlock.type === 'ReturnStatement' ) {
+      return isTypeJSX(lastBlock.argument)
+    }
   }
 
   return false

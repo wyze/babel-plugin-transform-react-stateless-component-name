@@ -83,7 +83,7 @@ test('set display name with function block then return', t => {
           type: 'BlockStatement',
           body: [
             { argument: { type: 'CommentNode' } },
-            { argument: { type: 'JSXElement' } },
+            { argument: { type: 'JSXElement' }, type: 'ReturnStatement' },
           ],
         },
         type: 'ArrowFunctionExpression',
