@@ -11,7 +11,7 @@ export const doesReturnJSX = ({ body }) => {
 
   const block = body.body
 
-  if ( block.length ) {
+  if ( block && block.length ) {
     const lastBlock = block.slice(0).pop()
 
     if ( lastBlock.type === 'ReturnStatement' ) {

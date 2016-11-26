@@ -32,6 +32,18 @@ test('ignores function that doesn\'t return JSX', t => {
   t.false(result)
 })
 
+// https://github.com/wyze/babel-plugin-transform-react-stateless-component-name/issues/4
+test('handles when body.body (block) is undefined', t => {
+  const node = {
+    body: {
+      type: 'NewExpression',
+    },
+  }
+  const result = doesReturnJSX(node)
+
+  t.false(result)
+})
+
 test('set display name for implicit return', t => {
   const node = {
     node: {
