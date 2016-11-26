@@ -1,7 +1,9 @@
 language: node_js
 node_js:
+  - v7
   - v6
-  - v5
   - v4
+before_install:
+  - npm i -g npm@latest
 after_success:
   npm run codecov
