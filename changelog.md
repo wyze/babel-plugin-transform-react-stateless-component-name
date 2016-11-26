@@ -1,5 +1,14 @@
+<a name="1.0.2"></a>
+## 1.0.2 (2016-11-26)
+
+* Fix when body.body (block) is undefined ([25504b6](https://github.com/wyze/babel-plugin-transform-react-stateless-component-name/commit/25504b6)), closes [#4](https://github.com/wyze/babel-plugin-transform-react-stateless-component-name/issues/4)
+* Update meta files ([be0400f](https://github.com/wyze/babel-plugin-transform-react-stateless-component-name/commit/be0400f))
+* Upgrade dependencies and test process ([fd43823](https://github.com/wyze/babel-plugin-transform-react-stateless-component-name/commit/fd43823))
+
+
+
 <a name="1.0.1"></a>
-# 1.0.1 (2016-07-17)
+## 1.0.1 (2016-07-17)
 
 * Add missing `babel-register` devDependency ([b47575c](https://github.com/wyze/babel-plugin-transform-react-stateless-component-name/commit/b47575c))
 * Don't assume last statement is a ReturnStatement ([06fea17](https://github.com/wyze/babel-plugin-transform-react-stateless-component-name/commit/06fea17)), closes [#3](https://github.com/wyze/babel-plugin-transform-react-stateless-component-name/issues/3)
