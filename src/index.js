@@ -1,21 +1,19 @@
-import path from 'path'
+import { basename, dirname } from 'path'
 
-export const isArrowFunction = ({ type }) => type === 'ArrowFunctionExpression'
+export const doesReturnJSX = node => {
+  const body = node.get('body')
 
-export const isTypeJSX = ({ type }) => type === 'JSXElement'
-
-export const doesReturnJSX = ({ body }) => {
-  if ( isTypeJSX(body) ) {
+  if ( body.isJSXElement() ) {
     return true
   }
 
-  const block = body.body
+  const block = body.get('body')
 
   if ( block && block.length ) {
-    const lastBlock = block.slice(0).pop()
+    const lastBlock = [ ...block ].pop()
 
-    if ( lastBlock.type === 'ReturnStatement' ) {
-      return isTypeJSX(lastBlock.argument)
+    if ( lastBlock.isReturnStatement() ) {
+      return lastBlock.get('argument').isJSXElement()
     }
   }
 
@@ -24,21 +22,26 @@ export const doesReturnJSX = ({ body }) => {
 
 export default ({ types: t }) => ({
   visitor: {
-    ExportDefaultDeclaration({ node }, { file: { opts } }) {
-      if ( isArrowFunction(node.declaration) ) {
-        if ( doesReturnJSX(node.declaration) ) {
-          let displayName = opts.basename
+    ExportDefaultDeclaration(path, { file: { opts } }) {
+      const node = path.get('declaration')
 
-          // ./{module name}/index.js
-          if ( displayName === 'index' ) {
-            displayName = path.basename(path.dirname(opts.filename))
-          }
-
-          // set display name
-          // eslint-disable-next-line no-param-reassign
-          node.declaration.id = t.identifier(displayName)
-        }
+      if ( !node.isArrowFunctionExpression() ) {
+        return
       }
+
+      if ( !doesReturnJSX(node) ) {
+        return
+      }
+
+      let displayName = opts.basename
+
+      // ./{module name}/index.js
+      if ( displayName === 'index' ) {
+        displayName = basename(dirname(opts.filename))
+      }
+
+      // sets display name
+      node.id = t.identifier(displayName)
     },
   },
 })

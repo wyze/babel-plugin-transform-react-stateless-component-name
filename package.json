@@ -35,9 +35,7 @@
   ],
   "ava": {
     "babel": "inherit",
-    "require": [
-      "babel-register"
-    ]
+    "require": "babel-register"
   },
   "babel": {
     "presets": [
@@ -55,20 +53,18 @@
     "extends": "wyze/base"
   },
   "nyc": {
-    "include": [
-      "src/*.js"
-    ],
+    "include": "src/*.js",
     "instrument": false,
-    "require": [
-      "babel-register"
-    ],
+    "require": "babel-register",
     "sourceMap": false
   },
   "devDependencies": {
-    "ava": "^0.17.0",
+    "ava": "github:avajs/ava",
     "babel-cli": "^6.18.0",
+    "babel-core": "^6.18.2",
     "babel-plugin-istanbul": "^3.0.0",
     "babel-preset-es2015": "^6.18.0",
+    "babel-preset-react": "^6.16.0",
     "babel-register": "^6.18.0",
     "codecov.io": "^0.1.6",
     "eslint": "^3.11.0",

@@ -1,0 +1,196 @@
+exports[`default export is a function block returning JSX 1`] = `
+"\'use strict\';
+
+Object.defineProperty(exports, \"__esModule\", {
+  value: true
+});
+
+var _react = require(\'react\');
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = function App() {
+  var message = \'Hello!\';
+
+  return _react2.default.createElement(
+    \'h1\',
+    null,
+    message
+  );
+};"
+`;
+
+exports[`ignores default function block when no return statement 1`] = `
+"\'use strict\';
+
+Object.defineProperty(exports, \"__esModule\", {
+  value: true
+});
+
+exports.default = function () {
+  // Do some stuff, but don\'t return anything.
+  var message = \'Hello!\';
+  var answer = 42;
+};"
+`;
+
+exports[`ignores default function block when not returning JSX 1`] = `
+"\'use strict\';
+
+Object.defineProperty(exports, \"__esModule\", {
+  value: true
+});
+
+var _react = require(\'react\');
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = function () {
+  var message = \'Hello!\';
+
+  return message;
+};"
+`;
+
+exports[`ignores default function when not returning JSX 1`] = `
+"\"use strict\";
+
+Object.defineProperty(exports, \"__esModule\", {
+  value: true
+});
+
+exports.default = function () {
+  return 42;
+};"
+`;
+
+exports[`sets default export from folder name when index.js 1`] = `
+"\'use strict\';
+
+Object.defineProperty(exports, \"__esModule\", {
+  value: true
+});
+
+var _react = require(\'react\');
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = function exportDefaultFromIndexjs() {
+  return _react2.default.createElement(
+    \'h1\',
+    null,
+    \'Hello!\'
+  );
+};"
+`;
+
+exports[`sets displayName for assignment default export 1`] = `
+"\'use strict\';
+
+Object.defineProperty(exports, \"__esModule\", {
+  value: true
+});
+
+var _react = require(\'react\');
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var App = function App() {
+  return _react2.default.createElement(
+    \'h1\',
+    null,
+    \'Hello!\'
+  );
+};
+
+exports.default = App;"
+`;
+
+exports[`sets function name for default export based on filename 1`] = `
+"\'use strict\';
+
+Object.defineProperty(exports, \"__esModule\", {
+  value: true
+});
+
+var _react = require(\'react\');
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = function App() {
+  return _react2.default.createElement(
+    \'h1\',
+    null,
+    \'Hello!\'
+  );
+};"
+`;
+
+exports[`works when default export is a function block returning JSX 1`] = `
+"'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = function App() {
+  var message = 'Hello!';
+
+  return _react2.default.createElement(
+    'h1',
+    null,
+    message
+  );
+};"
+`;
+
+exports[`works with preact 1`] = `
+"'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _Header = require('./Header');
+
+var _Header2 = _interopRequireDefault(_Header);
+
+var _preact = require('preact');
+
+var _preact2 = _interopRequireDefault(_preact);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/** @jsx preact.h */
+
+var App = function App() {
+  return _preact2.default.h(
+    'main',
+    null,
+    _preact2.default.h(_Header2.default, { title: 'Hello!' }),
+    _preact2.default.h(
+      'h2',
+      null,
+      'World!'
+    )
+  );
+};
+
+exports.default = App;"
+`;

@@ -1,112 +1,60 @@
-import
-  plugin,
-  { doesReturnJSX, isArrowFunction, isTypeJSX }
-from '../src'
+import { transformFileSync } from 'babel-core'
+import path from 'path'
+import plugin from '../src'
 import test from 'ava'
 
-test('isArrowFunction', t => {
-  const node = { type: 'ArrowFunctionExpression' }
-  const result = isArrowFunction(node)
+const getFixture = ( dir, file = 'App.js' ) =>
+  path.join(__dirname, 'fixtures', dir, file)
 
-  t.true(result)
-})
+const snapshotMacro = ( t, fixtureDir, fixtureFile ) => {
+  const fixture = getFixture(fixtureDir, fixtureFile)
+  const plugins = [ plugin ]
+  const presets = [ 'es2015', 'react' ]
+  const options = { plugins, presets }
+  const { code } = transformFileSync(fixture, options)
 
-test('isTypeJSX', t => {
-  const node = { type: 'JSXElement' }
-  const result = isTypeJSX(node)
+  t.snapshot(code)
+}
 
-  t.true(result)
-})
+test(
+  'ignores default function block when not returning JSX',
+  snapshotMacro,
+  'export-default-with-function-block-no-jsx',
+)
 
-test('doesReturnJSX', t => {
-  const node = { body: { type: 'JSXElement' } }
-  const result = doesReturnJSX(node)
+test(
+  'ignores default function block when no return statement',
+  snapshotMacro,
+  'export-default-function-block-without-return',
+)
 
-  t.true(result)
-})
+test(
+  'default export is a function block returning JSX',
+  snapshotMacro,
+  'export-default-with-function-block',
+)
 
-test('ignores function that doesn\'t return JSX', t => {
-  const node = { body: { type: 'BlockStatement', body: [] } }
-  const result = doesReturnJSX(node)
+test(
+  'ignores default function when not returning JSX',
+  snapshotMacro,
+  'export-default-no-jsx',
+)
 
-  t.false(result)
-})
+test(
+  'sets function name for default export based on filename',
+  snapshotMacro,
+  'export-default',
+)
 
-// https://github.com/wyze/babel-plugin-transform-react-stateless-component-name/issues/4
-test('handles when body.body (block) is undefined', t => {
-  const node = {
-    body: {
-      type: 'NewExpression',
-    },
-  }
-  const result = doesReturnJSX(node)
+test(
+  'sets displayName for assignment default export',
+  snapshotMacro,
+  'export-default-assignment',
+)
 
-  t.false(result)
-})
-
-test('set display name for implicit return', t => {
-  const node = {
-    node: {
-      declaration: {
-        body: { type: 'JSXElement' },
-        type: 'ArrowFunctionExpression',
-      },
-    },
-  }
-  const state = { file: { opts: { basename: 'App' } } }
-  const output = plugin({ types: { identifier: name => name } })
-  const { visitor: { ExportDefaultDeclaration: transformer } } = output
-
-  transformer(node, state)
-
-  t.is(node.node.declaration.id, 'App')
-})
-
-test('set display name from folder name if index.js', t => {
-  const node = {
-    node: {
-      declaration: {
-        body: { type: 'JSXElement' },
-        type: 'ArrowFunctionExpression',
-      },
-    },
-  }
-  const state = {
-    file: {
-      opts: {
-        basename: 'index',
-        filename: './App/index.js',
-      },
-    },
-  }
-  const output = plugin({ types: { identifier: name => name } })
-  const { visitor: { ExportDefaultDeclaration: transformer } } = output
-
-  transformer(node, state)
-
-  t.is(node.node.declaration.id, 'App')
-})
-
-test('set display name with function block then return', t => {
-  const node = {
-    node: {
-      declaration: {
-        body: {
-          type: 'BlockStatement',
-          body: [
-            { argument: { type: 'CommentNode' } },
-            { argument: { type: 'JSXElement' }, type: 'ReturnStatement' },
-          ],
-        },
-        type: 'ArrowFunctionExpression',
-      },
-    },
-  }
-  const state = { file: { opts: { basename: 'App' } } }
-  const output = plugin({ types: { identifier: name => name } })
-  const { visitor: { ExportDefaultDeclaration: transformer } } = output
-
-  transformer(node, state)
-
-  t.is(node.node.declaration.id, 'App')
-})
+test(
+  'sets default export from folder name when index.js',
+  snapshotMacro,
+  'export-default-from-indexjs',
+  'index.js',
+)
