@@ -58,3 +58,33 @@ test(
   'export-default-from-indexjs',
   'index.js',
 )
+
+test(
+  'sets displayName for assigned functional component',
+  snapshotMacro,
+  'assigned-component',
+)
+
+test(
+  'sets displayName for assigned functional component with block',
+  snapshotMacro,
+  'assigned-component-block',
+)
+
+test(
+  'sets displayName for named export functional component',
+  snapshotMacro,
+  'named-export',
+)
+
+test(
+  'sets displayName for named export functional component with block',
+  snapshotMacro,
+  'named-export-block',
+)
+
+test(
+  'ignores when jsx is assigned to a variable and not a component/function',
+  snapshotMacro,
+  'ignore-assigned-jsx',
+)

@@ -19,7 +19,9 @@ exports.default = function App() {
     null,
     message
   );
-};"
+};
+
+App.displayName = \'App\'"
 `;
 
 exports[`ignores default function block when no return statement 1`] = `
@@ -68,6 +70,28 @@ exports.default = function () {
 };"
 `;
 
+exports[`ignores when jsx is assigned to a variable and not a component/function 1`] = `
+"\'use strict\';
+
+Object.defineProperty(exports, \"__esModule\", {
+  value: true
+});
+
+var _react = require(\'react\');
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var HelloWorld = _react2.default.createElement(
+  \'h1\',
+  null,
+  \'Hello!\'
+);
+
+exports.default = HelloWorld;"
+`;
+
 exports[`sets default export from folder name when index.js 1`] = `
 "\'use strict\';
 
@@ -87,7 +111,61 @@ exports.default = function exportDefaultFromIndexjs() {
     null,
     \'Hello!\'
   );
-};"
+};
+
+exportDefaultFromIndexjs.displayName = \'exportDefaultFromIndexjs\'"
+`;
+
+exports[`sets displayName for assigned functional component 1`] = `
+"\'use strict\';
+
+Object.defineProperty(exports, \"__esModule\", {
+  value: true
+});
+
+var _react = require(\'react\');
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var HelloWorld = function HelloWorld() {
+  return _react2.default.createElement(
+    \'h1\',
+    null,
+    \'Hello!\'
+  );
+};
+
+HelloWorld.displayName = \'HelloWorld\'
+exports.default = HelloWorld;"
+`;
+
+exports[`sets displayName for assigned functional component with block 1`] = `
+"\'use strict\';
+
+Object.defineProperty(exports, \"__esModule\", {
+  value: true
+});
+
+var _react = require(\'react\');
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var HelloWorld = function HelloWorld() {
+  var message = \'Hello!\';
+
+  return _react2.default.createElement(
+    \'h1\',
+    null,
+    message
+  );
+};
+
+HelloWorld.displayName = \'HelloWorld\'
+exports.default = HelloWorld;"
 `;
 
 exports[`sets displayName for assignment default export 1`] = `
@@ -111,7 +189,58 @@ var App = function App() {
   );
 };
 
+App.displayName = \'App\'
 exports.default = App;"
+`;
+
+exports[`sets displayName for named export functional component 1`] = `
+"\'use strict\';
+
+Object.defineProperty(exports, \"__esModule\", {
+  value: true
+});
+exports.HelloWorld = undefined;
+
+var _react = require(\'react\');
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var HelloWorld = exports.HelloWorld = function HelloWorld() {
+  return _react2.default.createElement(
+    \'h1\',
+    null,
+    \'Hello!\'
+  );
+};
+HelloWorld.displayName = \'HelloWorld\'"
+`;
+
+exports[`sets displayName for named export functional component with block 1`] = `
+"\'use strict\';
+
+Object.defineProperty(exports, \"__esModule\", {
+  value: true
+});
+exports.HelloWorld = undefined;
+
+var _react = require(\'react\');
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var HelloWorld = exports.HelloWorld = function HelloWorld() {
+  var message = \'Hello!\';
+
+  return _react2.default.createElement(
+    \'h1\',
+    null,
+    message
+  );
+};
+HelloWorld.displayName = \'HelloWorld\'"
 `;
 
 exports[`sets function name for default export based on filename 1`] = `
@@ -133,7 +262,9 @@ exports.default = function App() {
     null,
     \'Hello!\'
   );
-};"
+};
+
+App.displayName = \'App\'"
 `;
 
 exports[`works when default export is a function block returning JSX 1`] = `
