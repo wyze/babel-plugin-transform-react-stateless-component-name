@@ -1,83 +1,9 @@
-import { basename, dirname } from 'path'
-
-const doesReturnJSX = node => {
-  if ( node.isJSXElement() ) {
-    return true
-  }
-
-  if ( node.isReturnStatement() ) {
-    return doesReturnJSX(node.get('argument'))
-  }
-
-  if ( node.isBlockStatement() ) {
-    const block = [ ...node.get('body') ].pop()
-
-    if ( block.isReturnStatement() ) {
-      return doesReturnJSX(block.get('argument'))
-    }
-
-    if ( block.isIfStatement() ) {
-      const alternate = block.get('alternate')
-      const consequent = block.get('consequent')
-
-      return [ alternate, consequent ].reduce(( jsx, branch ) => {
-        if ( jsx ) {
-          return jsx
-        }
-
-        return doesReturnJSX(branch)
-      }, false)
-    }
-  }
-
-  return false
-}
-
-const getTypesFromFilename = ( t, { basename: base, filename } ) => {
-  // ./{module name}/index.js
-  const name = t.toBindingIdentifierName(
-    base === 'index' ?
-      basename(dirname(filename)) :
-      base,
-  )
-
-  return {
-    identifier: t.identifier(name),
-    name,
-  }
-}
-
-const makeDisplayName = ( t, displayName ) =>
-  t.expressionStatement(
-    t.assignmentExpression(
-      '=',
-      t.memberExpression(
-        t.identifier(displayName),
-        t.identifier('displayName'),
-      ),
-      t.stringLiteral(displayName),
-    ),
-  )
-
-const isDisplayNameSet = ( statement, displayName ) => {
-  for ( let i = statement.container.length; i > -1; i -= 1 ) {
-    const sibling = statement.getSibling(i)
-
-    if ( sibling.isExpressionStatement() ) {
-      const member = sibling.get('expression.left')
-
-      /* istanbul ignore else */
-      if (
-        member.get('object').isIdentifier({ name: displayName }) &&
-        member.get('property').isIdentifier({ name: 'displayName' })
-      ) {
-        return true
-      }
-    }
-  }
-
-  return false
-}
+import {
+  doesReturnJSX,
+  getTypesFromFilename,
+  isDisplayNameSet,
+  makeDisplayName,
+} from './helper'
 
 export default ({ types: t }) => ({
   visitor: {
