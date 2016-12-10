@@ -35,13 +35,15 @@ const getTypesFromFilename = ( t, { basename: base, filename } ) => {
 }
 
 const makeDisplayName = ( t, displayName ) =>
-  t.assignmentExpression(
-    '=',
-    t.memberExpression(
-      t.identifier(displayName),
-      t.identifier('displayName'),
+  t.expressionStatement(
+    t.assignmentExpression(
+      '=',
+      t.memberExpression(
+        t.identifier(displayName),
+        t.identifier('displayName'),
+      ),
+      t.stringLiteral(displayName),
     ),
-    t.stringLiteral(displayName),
   )
 
 export default ({ types: t }) => ({
