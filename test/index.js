@@ -59,6 +59,12 @@ test(
 )
 
 test(
+  'sets default export function name with deeply nested JSX return statement',
+  snapshotMacro,
+  'export-default-eventually-return-jsx',
+)
+
+test(
   'sets default export from folder name when index.js',
   snapshotMacro,
   'export-default-from-indexjs',

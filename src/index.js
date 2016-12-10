@@ -1,44 +1,31 @@
 import { basename, dirname } from 'path'
 
 const doesReturnJSX = node => {
-  const body = node.get('body')
-
-  if ( body.isJSXElement() ) {
+  if ( node.isJSXElement() ) {
     return true
   }
 
-  if ( body.isBlockStatement() ) {
-    const lastBlock = [ ...body.get('body') ].pop()
+  if ( node.isReturnStatement() ) {
+    return doesReturnJSX(node.get('argument'))
+  }
 
-    if ( lastBlock.isReturnStatement() ) {
-      return lastBlock.get('argument').isJSXElement()
+  if ( node.isBlockStatement() ) {
+    const block = [ ...node.get('body') ].pop()
+
+    if ( block.isReturnStatement() ) {
+      return doesReturnJSX(block.get('argument'))
     }
 
-    if ( lastBlock.isIfStatement() ) {
-      const alternate = lastBlock.get('alternate')
-      const consequent = lastBlock.get('consequent')
+    if ( block.isIfStatement() ) {
+      const alternate = block.get('alternate')
+      const consequent = block.get('consequent')
 
-      return [ alternate, consequent ].reduce(( jsx, n ) => {
-        // If we have jsx, then just ignore all other checks.
+      return [ alternate, consequent ].reduce(( jsx, branch ) => {
         if ( jsx ) {
           return jsx
         }
 
-        // if ( true ) return <div />
-        if ( n.isReturnStatement() ) {
-          return n.get('argument').isJSXElement()
-        }
-
-        // if ( true ) { return <div /> }
-        if ( n.isBlockStatement() ) {
-          const l = [ ...n.get('body') ].pop()
-
-          if ( l.isReturnStatement() ) {
-            return l.get('argument').isJSXElement()
-          }
-        }
-
-        return false
+        return doesReturnJSX(branch)
       }, false)
     }
   }
@@ -101,7 +88,7 @@ export default ({ types: t }) => ({
         return
       }
 
-      if ( !doesReturnJSX(node) ) {
+      if ( !doesReturnJSX(node.get('body')) ) {
         return
       }
 
