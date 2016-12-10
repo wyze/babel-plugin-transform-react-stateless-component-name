@@ -46,6 +46,26 @@ const makeDisplayName = ( t, displayName ) =>
     ),
   )
 
+const isDisplayNameSet = ( statement, displayName ) => {
+  for ( let i = statement.container.length; i > -1; i -= 1 ) {
+    const sibling = statement.getSibling(i)
+
+    if ( sibling.isExpressionStatement() ) {
+      const member = sibling.get('expression.left')
+
+      /* istanbul ignore else */
+      if (
+        member.get('object').isIdentifier({ name: displayName }) &&
+        member.get('property').isIdentifier({ name: 'displayName' })
+      ) {
+        return true
+      }
+    }
+  }
+
+  return false
+}
+
 export default ({ types: t }) => ({
   visitor: {
     ExportDefaultDeclaration( path, { file: { opts } } ) {
@@ -95,6 +115,11 @@ export default ({ types: t }) => ({
 
       const statement = variable.getStatementParent()
       const { node: displayName } = variable.get('id.name')
+
+      // check to make sure we don't set displayName when already set
+      if ( isDisplayNameSet(statement, displayName) ) {
+        return
+      }
 
       statement.insertAfter(
         makeDisplayName(t, displayName),

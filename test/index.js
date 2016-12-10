@@ -88,3 +88,9 @@ test(
   snapshotMacro,
   'ignore-assigned-jsx',
 )
+
+test(
+  'ignores when displayName is already set on function',
+  snapshotMacro,
+  'ignore-existing-displayname',
+)
