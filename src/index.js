@@ -102,19 +102,10 @@ export default ({ types: t }) => ({
         return
       }
 
-      if ( variable.isExportDefaultDeclaration() ) {
-        const { name } = getTypesFromFilename(t, opts)
-
-        // sets display name
-        variable.getStatementParent().insertAfter(
-          makeDisplayName(t, name),
-        )
-
-        return
-      }
-
       const statement = variable.getStatementParent()
-      const { node: displayName } = variable.get('id.name')
+      const displayName = variable.isExportDefaultDeclaration() ?
+        getTypesFromFilename(t, opts).name :
+        variable.get('id.name').node
 
       // check to make sure we don't set displayName when already set
       if ( isDisplayNameSet(statement, displayName) ) {

@@ -94,3 +94,9 @@ test(
   snapshotMacro,
   'ignore-existing-displayname',
 )
+
+test(
+  'ignores when displayName is already set on default export function',
+  snapshotMacro,
+  'export-default-ignore-existing-displayname',
+)
