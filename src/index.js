@@ -7,13 +7,39 @@ const doesReturnJSX = node => {
     return true
   }
 
-  const block = body.get('body')
-
-  if ( block && block.length ) {
-    const lastBlock = [ ...block ].pop()
+  if ( body.isBlockStatement() ) {
+    const lastBlock = [ ...body.get('body') ].pop()
 
     if ( lastBlock.isReturnStatement() ) {
       return lastBlock.get('argument').isJSXElement()
+    }
+
+    if ( lastBlock.isIfStatement() ) {
+      const alternate = lastBlock.get('alternate')
+      const consequent = lastBlock.get('consequent')
+
+      return [ alternate, consequent ].reduce(( jsx, n ) => {
+        // If we have jsx, then just ignore all other checks.
+        if ( jsx ) {
+          return jsx
+        }
+
+        // if ( true ) return <div />
+        if ( n.isReturnStatement() ) {
+          return n.get('argument').isJSXElement()
+        }
+
+        // if ( true ) { return <div /> }
+        if ( n.isBlockStatement() ) {
+          const l = [ ...n.get('body') ].pop()
+
+          if ( l.isReturnStatement() ) {
+            return l.get('argument').isJSXElement()
+          }
+        }
+
+        return false
+      }, false)
     }
   }
 

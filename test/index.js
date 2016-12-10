@@ -41,6 +41,12 @@ test(
 )
 
 test(
+  'ignores default function block when not returning JSX',
+  snapshotMacro,
+  'export-default-no-jsx-block',
+)
+
+test(
   'sets function name for default export based on filename',
   snapshotMacro,
   'export-default',
@@ -99,4 +105,22 @@ test(
   'ignores when displayName is already set on default export function',
   snapshotMacro,
   'export-default-ignore-existing-displayname',
+)
+
+test(
+  'ignores displayName when if/else block has no return statement',
+  snapshotMacro,
+  'export-default-dynamic-no-return',
+)
+
+test(
+  'sets displayName when if/else returns JSX',
+  snapshotMacro,
+  'export-default-dynamic-return',
+)
+
+test(
+  'sets displayName when if/else block returns JSX',
+  snapshotMacro,
+  'export-default-dynamic-return-block',
 )

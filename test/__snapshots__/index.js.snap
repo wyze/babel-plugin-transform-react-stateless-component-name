@@ -58,6 +58,22 @@ exports.default = function () {
 };"
 `;
 
+exports[`ignores default function block when not returning JSX 2`] = `
+"\'use strict\';
+
+Object.defineProperty(exports, \"__esModule\", {
+  value: true
+});
+
+exports.default = function () {
+  return new Promise(function (resolve) {
+    window.addEventListener(\'scroll\', function () {
+      resolve(window.scroll);
+    });
+  });
+};"
+`;
+
 exports[`ignores default function when not returning JSX 1`] = `
 "\"use strict\";
 
@@ -67,6 +83,31 @@ Object.defineProperty(exports, \"__esModule\", {
 
 exports.default = function () {
   return 42;
+};"
+`;
+
+exports[`ignores displayName when if/else block has no return statement 1`] = `
+"\'use strict\';
+
+Object.defineProperty(exports, \"__esModule\", {
+  value: true
+});
+
+var _react = require(\'react\');
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = function (_ref) {
+  var renderA = _ref.renderA,
+      renderB = _ref.renderB;
+
+  var loading = true;
+
+  if (loading) renderA();else {
+    renderB();
+  }
 };"
 `;
 
@@ -294,6 +335,70 @@ var HelloWorld = exports.HelloWorld = function HelloWorld() {
   );
 };
 HelloWorld.displayName = \'HelloWorld\';"
+`;
+
+exports[`sets displayName when if/else block returns JSX 1`] = `
+"\'use strict\';
+
+Object.defineProperty(exports, \"__esModule\", {
+  value: true
+});
+
+var _react = require(\'react\');
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = function App() {
+  var loading = true;
+
+  if (loading) {
+    return _react2.default.createElement(
+      \'h1\',
+      null,
+      \'Loading...\'
+    );
+  } else {
+    return _react2.default.createElement(
+      \'h1\',
+      null,
+      \'Hello!\'
+    );
+  }
+};
+
+App.displayName = \'App\';"
+`;
+
+exports[`sets displayName when if/else returns JSX 1`] = `
+"\'use strict\';
+
+Object.defineProperty(exports, \"__esModule\", {
+  value: true
+});
+
+var _react = require(\'react\');
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = function App() {
+  var loading = true;
+
+  if (loading) return _react2.default.createElement(
+    \'h1\',
+    null,
+    \'Loading...\'
+  );else return _react2.default.createElement(
+    \'h1\',
+    null,
+    \'Hello!\'
+  );
+};
+
+App.displayName = \'App\';"
 `;
 
 exports[`sets function name for default export based on filename 1`] = `
