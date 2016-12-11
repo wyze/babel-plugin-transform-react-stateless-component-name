@@ -1,8 +1,25 @@
+// @flow
+
+import type { BabelTypes } from '../types'
+import type { BindingIdentifierName, Identifier } from 'babel-types'
 import path from 'path'
 
-const getTypesFromFilename = ( t, { basename, filename } ) => {
+type File = {
+  basename: string,
+  filename: string,
+}
+
+type FilenameTypes = {
+  identifier: Identifier,
+  name: string,
+}
+
+const getTypesFromFilename = (
+  t: BabelTypes,
+  { basename, filename }: File,
+): FilenameTypes => {
   // ./{module name}/index.js
-  const name = t.toBindingIdentifierName(
+  const name: BindingIdentifierName = t.toBindingIdentifierName(
     basename === 'index' ?
       path.basename(path.dirname(filename)) :
       basename,

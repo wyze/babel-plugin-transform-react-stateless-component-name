@@ -13,9 +13,10 @@
     "build": "babel src --out-dir lib",
     "clean": "rimraf .nyc_output coverage lib",
     "codecov": "NODE_ENV=test nyc report -r text-lcov | codecov",
+    "flow": "flow check",
     "lint": "eslint src test",
     "prebuild": "npm run clean && npm test",
-    "pretest": "npm run lint",
+    "pretest": "npm run lint && npm run flow",
     "preversion": "npm run build",
     "test": "NODE_ENV=test nyc npm run test:only",
     "test:only": "ava",
@@ -39,7 +40,8 @@
   },
   "babel": {
     "presets": [
-      "es2015"
+      "es2015",
+      "flow"
     ],
     "env": {
       "test": {
@@ -50,7 +52,13 @@
     }
   },
   "eslintConfig": {
-    "extends": "wyze/base"
+    "extends": [
+      "wyze/base",
+      "wyze/flow"
+    ],
+    "settings": {
+      "import/resolver": "node"
+    }
   },
   "nyc": {
     "include": "src/*.js",
@@ -62,16 +70,23 @@
     "ava": "github:avajs/ava",
     "babel-cli": "^6.18.0",
     "babel-core": "^6.18.2",
+    "babel-eslint": "^7.1.1",
     "babel-plugin-istanbul": "^3.0.0",
     "babel-preset-es2015": "^6.18.0",
+    "babel-preset-flow": "^1.0.0",
     "babel-preset-react": "^6.16.0",
     "babel-register": "^6.18.0",
+    "babel-traverse": "^6.20.0",
+    "babel-types": "^6.20.0",
     "codecov.io": "^0.1.6",
     "eslint": "^3.11.0",
     "eslint-config-airbnb": "^13.0.0",
     "eslint-config-wyze": "^4.0.0-beta.3",
+    "eslint-import-resolver-node": "^0.2.3",
+    "eslint-plugin-flowtype": "^2.29.1",
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-wyze": "^2.0.0",
+    "flow-bin": "^0.36.0",
     "nyc": "^10.0.0",
     "rimraf": "^2.5.4"
   }

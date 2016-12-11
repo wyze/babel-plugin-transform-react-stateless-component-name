@@ -1,4 +1,8 @@
-const doesReturnJSX = node => {
+// @flow
+
+import type { NodePath } from 'babel-traverse'
+
+const doesReturnJSX = ( node: NodePath): boolean => {
   if ( node.isJSXElement() ) {
     return true
   }
@@ -8,23 +12,26 @@ const doesReturnJSX = node => {
   }
 
   if ( node.isBlockStatement() ) {
-    const block = [ ...node.get('body') ].pop()
+    const block: NodePath = [ ...node.get('body') ].pop()
 
     if ( block.isReturnStatement() ) {
       return doesReturnJSX(block.get('argument'))
     }
 
     if ( block.isIfStatement() ) {
-      const alternate = block.get('alternate')
-      const consequent = block.get('consequent')
+      const alternate: NodePath = block.get('alternate')
+      const consequent: NodePath = block.get('consequent')
 
-      return [ alternate, consequent ].reduce(( jsx, branch ) => {
-        if ( jsx ) {
-          return jsx
-        }
+      return [ alternate, consequent ].reduce(
+        ( jsx: boolean, branch: NodePath ): boolean => {
+          if ( jsx ) {
+            return jsx
+          }
 
-        return doesReturnJSX(branch)
-      }, false)
+          return doesReturnJSX(branch)
+        },
+        false,
+      )
     }
   }
 

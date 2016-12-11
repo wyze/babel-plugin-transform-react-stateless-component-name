@@ -1,3 +1,7 @@
+// @flow
+
+import type { BabelTypes } from './types'
+import type { File, NodePath } from 'babel-traverse'
 import {
   doesReturnJSX,
   getTypesFromFilename,
@@ -5,10 +9,22 @@ import {
   makeDisplayName,
 } from './helper'
 
-export default ({ types: t }) => ({
+type VisitorHandler = ( NodePath, File ) => ?void
+
+type Visitor = {
   visitor: {
-    ExportDefaultDeclaration( path, { file: { opts } } ) {
-      const node = path.get('declaration')
+    ExportDefaultDeclaration: VisitorHandler,
+    JSXElement: VisitorHandler,
+  },
+}
+
+export default ({ types: t }: { types: BabelTypes }): Visitor => ({
+  visitor: {
+    ExportDefaultDeclaration(
+      path: NodePath,
+      { file: { opts } }: File,
+    ): ?void {
+      const node: NodePath = path.get('declaration')
 
       if (
         !node.isArrowFunctionExpression() &&
@@ -40,7 +56,7 @@ export default ({ types: t }) => ({
 
       path.replaceWithMultiple([ variable, assignment, exporter ])
     },
-    JSXElement( path ) {
+    JSXElement( path: NodePath ): ?void {
       const { parentPath: parent } = path
 
       // avoids traversing assigning jsx to variable
@@ -48,7 +64,7 @@ export default ({ types: t }) => ({
         return
       }
 
-      const variable = path.find(node =>
+      const variable = path.find(( node: NodePath ): NodePath =>
         node.isVariableDeclarator() || node.isExportDefaultDeclaration(),
       )
 

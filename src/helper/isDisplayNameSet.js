@@ -1,9 +1,16 @@
-const isDisplayNameSet = ( statement, displayName ) => {
+// @flow
+
+import type { NodePath } from 'babel-traverse'
+
+const isDisplayNameSet = (
+  statement: NodePath,
+  displayName: string,
+): boolean => {
   for ( let i = statement.container.length; i > -1; i -= 1 ) {
-    const sibling = statement.getSibling(i)
+    const sibling: NodePath = statement.getSibling(i)
 
     if ( sibling.isExpressionStatement() ) {
-      const member = sibling.get('expression.left')
+      const member: NodePath = sibling.get('expression.left')
 
       /* istanbul ignore else */
       if (

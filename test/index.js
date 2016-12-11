@@ -1,12 +1,20 @@
+// @flow
+
+import type { ContextualTest } from '../src/types'
+
 import { transformFileSync } from 'babel-core'
 import path from 'path'
 import plugin from '../src'
 import test from 'ava'
 
-const getFixture = ( dir, file = 'App.js' ) =>
+const getFixture = ( dir: string, file: string = 'App.js' ): string =>
   path.join(__dirname, 'fixtures', dir, file)
 
-const snapshotMacro = ( t, fixtureDir, fixtureFile ) => {
+const snapshotMacro = (
+  t: ContextualTest,
+  fixtureDir: string,
+  fixtureFile: string,
+) => {
   const fixture = getFixture(fixtureDir, fixtureFile)
   const plugins = [ plugin ]
   const presets = [ 'es2015', 'react' ]
