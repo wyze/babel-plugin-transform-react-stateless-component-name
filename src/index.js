@@ -10,7 +10,10 @@ export default ({ types: t }) => ({
     ExportDefaultDeclaration( path, { file: { opts } } ) {
       const node = path.get('declaration')
 
-      if ( !node.isArrowFunctionExpression() ) {
+      if (
+        !node.isArrowFunctionExpression() &&
+        !node.isFunctionDeclaration()
+      ) {
         return
       }
 
@@ -18,12 +21,26 @@ export default ({ types: t }) => ({
         return
       }
 
-      const { identifier } = getTypesFromFilename(t, opts)
+      const { identifier, name } = getTypesFromFilename(t, opts)
 
       // sets display name
-      node.id = identifier
+      node.node.id = identifier
+
+      const { body, id, params } = node.node
+      // checks to see if we need to convert `export default function () {}`
+      const init = node.isFunctionDeclaration() ?
+        t.functionExpression(id, params, body) :
+        node.node
+
+      const variable = t.variableDeclaration('const', [
+        t.variableDeclarator(identifier, init),
+      ])
+      const assignment = makeDisplayName(t, name)
+      const exporter = t.exportDefaultDeclaration(identifier)
+
+      path.replaceWithMultiple([ variable, assignment, exporter ])
     },
-    JSXElement( path, { file: { opts } } ) {
+    JSXElement( path ) {
       const { parentPath: parent } = path
 
       // avoids traversing assigning jsx to variable
@@ -42,18 +59,14 @@ export default ({ types: t }) => ({
       }
 
       const statement = variable.getStatementParent()
-      const displayName = variable.isExportDefaultDeclaration() ?
-        getTypesFromFilename(t, opts).name :
-        variable.get('id.name').node
+      const { node: name } = variable.get('id.name')
 
       // check to make sure we don't set displayName when already set
-      if ( isDisplayNameSet(statement, displayName) ) {
+      if ( isDisplayNameSet(statement, name) ) {
         return
       }
 
-      statement.insertAfter(
-        makeDisplayName(t, displayName),
-      )
+      statement.insertAfter(makeDisplayName(t, name))
     },
   },
 })

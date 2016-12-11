@@ -11,7 +11,7 @@ var _react2 = _interopRequireDefault(_react);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-exports.default = function App() {
+var App = function App() {
   var message = \'Hello!\';
 
   return _react2.default.createElement(
@@ -21,7 +21,8 @@ exports.default = function App() {
   );
 };
 
-App.displayName = \'App\';"
+App.displayName = \'App\';
+exports.default = App;"
 `;
 
 exports[`ignores default function block when no return statement 1`] = `
@@ -124,7 +125,7 @@ var _react2 = _interopRequireDefault(_react);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-exports.default = function App() {
+var App = function App() {
   return _react2.default.createElement(
     \'h1\',
     null,
@@ -132,8 +133,10 @@ exports.default = function App() {
   );
 };
 
-// We know this will become App from the filename
+App.displayName = \'App\';
+exports.default = App;
 
+// We know this will become App from the filename
 
 App.displayName = \'App\';"
 `;
@@ -199,7 +202,7 @@ var _react2 = _interopRequireDefault(_react);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-exports.default = function exportDefaultFromIndexjs() {
+var exportDefaultFromIndexjs = function exportDefaultFromIndexjs() {
   return _react2.default.createElement(
     \'h1\',
     null,
@@ -207,7 +210,8 @@ exports.default = function exportDefaultFromIndexjs() {
   );
 };
 
-exportDefaultFromIndexjs.displayName = \'exportDefaultFromIndexjs\';"
+exportDefaultFromIndexjs.displayName = \'exportDefaultFromIndexjs\';
+exports.default = exportDefaultFromIndexjs;"
 `;
 
 exports[`sets default export function name with deeply nested JSX return statement 1`] = `
@@ -223,7 +227,7 @@ var _react2 = _interopRequireDefault(_react);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-exports.default = function App() {
+var App = function App() {
   if (true) {
     if (true) {
       if (true) {
@@ -239,7 +243,8 @@ exports.default = function App() {
   }
 };
 
-App.displayName = \'App\';"
+App.displayName = \'App\';
+exports.default = App;"
 `;
 
 exports[`sets displayName for assigned functional component 1`] = `
@@ -382,7 +387,7 @@ var _react2 = _interopRequireDefault(_react);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-exports.default = function App() {
+var App = function App() {
   var loading = true;
 
   if (loading) {
@@ -400,7 +405,8 @@ exports.default = function App() {
   }
 };
 
-App.displayName = \'App\';"
+App.displayName = \'App\';
+exports.default = App;"
 `;
 
 exports[`sets displayName when if/else returns JSX 1`] = `
@@ -416,7 +422,7 @@ var _react2 = _interopRequireDefault(_react);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-exports.default = function App() {
+var App = function App() {
   var loading = true;
 
   if (loading) return _react2.default.createElement(
@@ -430,7 +436,33 @@ exports.default = function App() {
   );
 };
 
-App.displayName = \'App\';"
+App.displayName = \'App\';
+exports.default = App;"
+`;
+
+exports[`sets displayName with default export being a function declaration 1`] = `
+"\'use strict\';
+
+Object.defineProperty(exports, \"__esModule\", {
+  value: true
+});
+
+var _react = require(\'react\');
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var App = function App() {
+  return _react2.default.createElement(
+    \'h1\',
+    null,
+    \'Hello!\'
+  );
+};
+
+App.displayName = \'App\';
+exports.default = App;"
 `;
 
 exports[`sets function name for default export based on filename 1`] = `
@@ -446,7 +478,7 @@ var _react2 = _interopRequireDefault(_react);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-exports.default = function App() {
+var App = function App() {
   return _react2.default.createElement(
     \'h1\',
     null,
@@ -454,7 +486,8 @@ exports.default = function App() {
   );
 };
 
-App.displayName = \'App\';"
+App.displayName = \'App\';
+exports.default = App;"
 `;
 
 exports[`works when default export is a function block returning JSX 1`] = `
