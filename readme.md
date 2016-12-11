@@ -8,7 +8,7 @@
 
 ## Example
 
-```js
+```jsx
 // App.jsx
 import React from 'react'
 
@@ -34,8 +34,16 @@ render(<App />, document.getElementById('root'))
 
 ## Installation
 
+### Yarn
+
 ```
-$ npm install babel-plugin-transform-react-stateless-component-name
+$ yarn add --dev babel-plugin-transform-react-stateless-component-name
+```
+
+### npm
+
+```
+$ npm install --save-dev babel-plugin-transform-react-stateless-component-name
 ```
 
 ## Usage
