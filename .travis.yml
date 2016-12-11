@@ -6,4 +6,5 @@ node_js:
 before_install:
   - npm i -g npm@latest
 after_success:
-  npm run codecov
+  - npm run test:cover
+  - bash <(curl -s https://codecov.io/bash)

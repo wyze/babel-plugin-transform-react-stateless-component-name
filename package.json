@@ -12,13 +12,13 @@
   "scripts": {
     "build": "babel src --out-dir lib",
     "clean": "rimraf .nyc_output coverage lib",
-    "codecov": "NODE_ENV=test nyc report -r text-lcov | codecov",
     "flow": "flow check",
     "lint": "eslint src test",
     "prebuild": "npm run clean && npm test",
     "pretest": "npm run lint && npm run flow",
     "preversion": "npm run build",
     "test": "NODE_ENV=test nyc npm run test:only",
+    "test:cover": "nyc report -r text-lcov > codecov.lcov",
     "test:only": "ava",
     "test:watch": "npm run test:only -- --watch"
   },
@@ -78,7 +78,6 @@
     "babel-register": "^6.18.0",
     "babel-traverse": "^6.20.0",
     "babel-types": "^6.20.0",
-    "codecov.io": "^0.1.6",
     "eslint": "^3.12.0",
     "eslint-config-airbnb": "^13.0.0",
     "eslint-config-wyze": "^4.0.0-beta.3",
