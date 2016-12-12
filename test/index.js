@@ -92,6 +92,12 @@ test(
 )
 
 test(
+  'ignores displayName with default export being a function declaration',
+  snapshotMacro,
+  'export-default-function-declaration-with-displayname',
+)
+
+test(
   'ignores when displayName is already set on default export function',
   snapshotMacro,
   'export-default-ignore-existing-displayname',

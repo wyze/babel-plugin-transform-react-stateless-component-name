@@ -25,6 +25,7 @@ export default ({ types: t }: { types: BabelTypes }): Visitor => ({
       { file: { opts } }: File,
     ): ?void {
       const node: NodePath = path.get('declaration')
+      const arrow = node.isArrowFunctionExpression()
 
       if (
         !node.isArrowFunctionExpression() &&
@@ -37,24 +38,37 @@ export default ({ types: t }: { types: BabelTypes }): Visitor => ({
         return
       }
 
-      const { identifier, name } = getTypesFromFilename(t, opts)
+      const { name: functionName } = node.node.id || {}
+      const { identifier, name } = arrow ?
+        getTypesFromFilename(t, opts) :
+        ({
+          identifier: t.identifier(functionName),
+          name: functionName,
+        })
 
       // sets display name
       node.node.id = identifier
 
       const { body, id, params } = node.node
       // checks to see if we need to convert `export default function () {}`
-      const init = node.isFunctionDeclaration() ?
-        t.functionExpression(id, params, body) :
-        node.node
+      const init = arrow ?
+        node.node :
+        t.functionExpression(id, params, body)
 
       const variable = t.variableDeclaration('const', [
         t.variableDeclarator(identifier, init),
       ])
-      const assignment = makeDisplayName(t, name)
+      const assignment = isDisplayNameSet(path.getStatementParent(), name) ?
+        undefined :
+        makeDisplayName(t, name)
       const exporter = t.exportDefaultDeclaration(identifier)
 
-      path.replaceWithMultiple([ variable, assignment, exporter ])
+      path.replaceWithMultiple([
+        variable,
+        assignment,
+        exporter,
+        // filter out possibly undefined assignment
+      ].filter(( replacement: NodePath ): boolean => !!replacement))
     },
     JSXElement( path: NodePath ): ?void {
       const { parentPath: parent } = path

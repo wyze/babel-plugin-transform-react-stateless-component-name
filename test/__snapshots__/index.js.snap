@@ -112,6 +112,33 @@ exports.default = function (_ref) {
 };"
 `;
 
+exports[`ignores displayName with default export being a function declaration 1`] = `
+"\'use strict\';
+
+Object.defineProperty(exports, \"__esModule\", {
+  value: true
+});
+
+var _react = require(\'react\');
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Hello = function Hello() {
+  return _react2.default.createElement(
+    \'h1\',
+    null,
+    \'Hello!\'
+  );
+};
+
+exports.default = Hello;
+
+
+Hello.displayName = \'Hello\';"
+`;
+
 exports[`ignores when displayName is already set on default export function 1`] = `
 "\'use strict\';
 
@@ -133,7 +160,6 @@ var App = function App() {
   );
 };
 
-App.displayName = \'App\';
 exports.default = App;
 
 // We know this will become App from the filename
