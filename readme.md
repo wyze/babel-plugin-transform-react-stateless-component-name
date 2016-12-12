@@ -5,6 +5,8 @@
 [![Codecov.io][codecov-image]][codecov-url]
 
 > Adds a display name to the stateless component in the React Dev Tools.
+>
+> **Note:** Now will add displayName property to functions as well to help with Snapshot testing.
 
 ## Example
 
