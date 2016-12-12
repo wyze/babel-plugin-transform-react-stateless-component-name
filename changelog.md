@@ -1,5 +1,5 @@
 <a name="1.1.0"></a>
-## 1.1.0 (2016-12-11)
+# 1.1.0 (2016-12-11)
 
 * Add displayName property to assigned functional components ([dda83bc](https://github.com/wyze/babel-plugin-transform-react-stateless-component-name/commit/dda83bc)), closes [#1](https://github.com/wyze/babel-plugin-transform-react-stateless-component-name/issues/1)
 * Add fix when displayName is set on default export function declaration ([1199c11](https://github.com/wyze/babel-plugin-transform-react-stateless-component-name/commit/1199c11))
@@ -21,7 +21,7 @@
 
 
 <a name="1.0.2"></a>
-## 1.0.2 (2016-11-26)
+# 1.0.2 (2016-11-26)
 
 * Fix when body.body (block) is undefined ([25504b6](https://github.com/wyze/babel-plugin-transform-react-stateless-component-name/commit/25504b6)), closes [#4](https://github.com/wyze/babel-plugin-transform-react-stateless-component-name/issues/4)
 * Update meta files ([be0400f](https://github.com/wyze/babel-plugin-transform-react-stateless-component-name/commit/be0400f))
@@ -30,7 +30,7 @@
 
 
 <a name="1.0.1"></a>
-## 1.0.1 (2016-07-17)
+# 1.0.1 (2016-07-17)
 
 * Add missing `babel-register` devDependency ([b47575c](https://github.com/wyze/babel-plugin-transform-react-stateless-component-name/commit/b47575c))
 * Don't assume last statement is a ReturnStatement ([06fea17](https://github.com/wyze/babel-plugin-transform-react-stateless-component-name/commit/06fea17)), closes [#3](https://github.com/wyze/babel-plugin-transform-react-stateless-component-name/issues/3)
