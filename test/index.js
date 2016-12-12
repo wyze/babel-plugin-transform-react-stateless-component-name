@@ -37,6 +37,12 @@ test(
 )
 
 test(
+  'isDisplayName check should ignore non-assignment expression statements',
+  snapshotMacro,
+  'displayname-check-ignore-non-assignment-expression',
+)
+
+test(
   'sets function name for default export based on filename',
   snapshotMacro,
   'export-default',

@@ -215,6 +215,92 @@ var HelloWorld = _react2.default.createElement(
 exports.default = HelloWorld;"
 `;
 
+exports[`isDisplayName check should ignore non-assignment expression statements 1`] = `
+"\'use strict\';
+
+Object.defineProperty(exports, \"__esModule\", {
+    value: true
+});
+
+require(\'normalize.css\');
+
+require(\'./global.scss\');
+
+var _react = require(\'react\');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRouter = require(\'react-router\');
+
+var _reactIntl = require(\'react-intl\');
+
+var _reactHelmet = require(\'react-helmet\');
+
+var _reactHelmet2 = _interopRequireDefault(_reactHelmet);
+
+var _webfontloader = require(\'webfontloader\');
+
+var _webfontloader2 = _interopRequireDefault(_webfontloader);
+
+var _lang = require(\'./util/lang\');
+
+var _lang2 = _interopRequireDefault(_lang);
+
+var _NotFound = require(\'./components/Pages/NotFound\');
+
+var _NotFound2 = _interopRequireDefault(_NotFound);
+
+var _Header = require(\'./components/Header\');
+
+var _Header2 = _interopRequireDefault(_Header);
+
+var _Footer = require(\'./components/Footer\');
+
+var _Footer2 = _interopRequireDefault(_Footer);
+
+var _routes = require(\'./routes\');
+
+var _routes2 = _interopRequireDefault(_routes);
+
+var _app = require(\'./app.scss\');
+
+var _app2 = _interopRequireDefault(_app);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+_webfontloader2.default.load({
+    google: {
+        families: [\'Roboto:400,700\']
+    }
+});
+
+var App = function App(_ref) {
+    var intl = _ref.intl;
+
+
+    (0, _lang.storeIntlReference)(intl);
+
+    return _react2.default.createElement(
+        \'div\',
+        null,
+        _react2.default.createElement(_reactHelmet2.default, { titleTemplate: \'%s - Datagro\', title: (0, _lang2.default)(\'home\') }),
+        _react2.default.createElement(_Header2.default, null),
+        _react2.default.createElement(
+            \'div\',
+            { className: _app2.default.main },
+            _routes2.default.map(function (route, i) {
+                return _react2.default.createElement(_reactRouter.Match, { key: i, pattern: route[0], component: route[1], exactly: !!route[2] });
+            }),
+            _react2.default.createElement(_reactRouter.Miss, { component: _NotFound2.default })
+        ),
+        _react2.default.createElement(_Footer2.default, null)
+    );
+};
+
+App.displayName = \'App\';
+exports.default = (0, _reactIntl.injectIntl)(App);"
+`;
+
 exports[`sets default export from folder name when index.js 1`] = `
 "\'use strict\';
 

@@ -10,10 +10,12 @@ const isDisplayNameSet = (
     const sibling: NodePath = statement.getSibling(i)
 
     if ( sibling.isExpressionStatement() ) {
+      const expression: NodePath = sibling.get('expression')
       const member: NodePath = sibling.get('expression.left')
 
       /* istanbul ignore else */
       if (
+        expression.isAssignmentExpression() &&
         member.get('object').isIdentifier({ name: displayName }) &&
         member.get('property').isIdentifier({ name: 'displayName' })
       ) {
