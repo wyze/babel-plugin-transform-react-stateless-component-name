@@ -1,3 +1,11 @@
+<a name="1.1.1"></a>
+# 1.1.1 (2016-12-12)
+
+* Fix isDisplayName to not error on non-AssignmentExpression statements ([10e83bd](https://github.com/wyze/babel-plugin-transform-react-stateless-component-name/commit/10e83bd)), closes [#5](https://github.com/wyze/babel-plugin-transform-react-stateless-component-name/issues/5)
+* Reformat changelog ([a9b7a2b](https://github.com/wyze/babel-plugin-transform-react-stateless-component-name/commit/a9b7a2b))
+
+
+
 <a name="1.1.0"></a>
 # 1.1.0 (2016-12-11)
 
