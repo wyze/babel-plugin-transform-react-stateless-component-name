@@ -156,3 +156,9 @@ test(
   snapshotMacro,
   'named-export-block',
 )
+
+test(
+  'ignores jsx expression blocks',
+  snapshotMacro,
+  'ignore-jsx-expression-blocks',
+)
