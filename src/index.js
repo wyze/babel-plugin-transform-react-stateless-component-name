@@ -79,8 +79,14 @@ export default ({ types: t }: { types: BabelTypes }): Visitor => ({
       }
 
       const variable = path.find(( node: NodePath ): NodePath =>
-        node.isVariableDeclarator() || node.isExportDefaultDeclaration(),
+        node.isVariableDeclarator() || node.isExportDefaultDeclaration() ||
+          node.isJSXExpressionContainer(),
       )
+
+      // Ignore JSX elements inside JSX expression blocks
+      if ( t.isJSXExpressionContainer(variable) ) {
+        return
+      }
 
       // Ignore the `if` since I can't come up with a test case to satisfy it.
       /* istanbul ignore if */
