@@ -88,14 +88,19 @@ export default ({ types: t }: { types: BabelTypes }): Visitor => ({
         return
       }
 
-      // Ignore the `if` since I can't come up with a test case to satisfy it.
-      /* istanbul ignore if */
-      if ( !variable ) {
+      const name = (() => {
+        try {
+          return variable.get('id.name').node
+        } catch (errr) {
+          return undefined
+        }
+      })()
+
+      if ( name == null ) {
         return
       }
 
       const statement = variable.getStatementParent()
-      const { node: name } = variable.get('id.name')
 
       // check to make sure we don't set displayName when already set
       if ( isDisplayNameSet(statement, name) ) {
