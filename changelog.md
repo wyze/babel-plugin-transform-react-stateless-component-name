@@ -1,5 +1,12 @@
 ## Change Log
 
+### [v1.1.2](https://github.com/wyze/babel-plugin-transform-react-stateless-component-name/releases/tag/v1.1.2) (2017-11-07)
+
+* [[`673e2a4128`](https://github.com/wyze/babel-plugin-transform-react-stateless-component-name/commit/673e2a4128)] - Update to use `write-changelog` package (Neil Kistner)
+* [[`a853f804b1`](https://github.com/wyze/babel-plugin-transform-react-stateless-component-name/commit/a853f804b1)] - Remove all istanbul ignores (#10) (Thomas Grainger)
+* [[`e875edd575`](https://github.com/wyze/babel-plugin-transform-react-stateless-component-name/commit/e875edd575)] - Avoid crash on block-arrow components with hoc wrapper (#9) (Thomas Grainger)
+* [[`e98586fe5a`](https://github.com/wyze/babel-plugin-transform-react-stateless-component-name/commit/e98586fe5a)] - Ignore JSX Expression blocks (#7) (Daniel J)
+
 ### [v1.1.1](https://github.com/wyze/babel-plugin-transform-react-stateless-component-name/releases/tag/v1.1.1) (2016-12-12)
 
 * [[`a9b7a2bb5d`](https://github.com/wyze/babel-plugin-transform-react-stateless-component-name/commit/a9b7a2bb5d)] - Reformat changelog (Neil Kistner)
