@@ -1,54 +1,43 @@
-<a name="1.1.1"></a>
-# 1.1.1 (2016-12-12)
+## Change Log
 
-* Fix isDisplayName to not error on non-AssignmentExpression statements ([10e83bd](https://github.com/wyze/babel-plugin-transform-react-stateless-component-name/commit/10e83bd)), closes [#5](https://github.com/wyze/babel-plugin-transform-react-stateless-component-name/issues/5)
-* Reformat changelog ([a9b7a2b](https://github.com/wyze/babel-plugin-transform-react-stateless-component-name/commit/a9b7a2b))
+### [v1.1.1](https://github.com/wyze/babel-plugin-transform-react-stateless-component-name/releases/tag/v1.1.1) (2016-12-12)
 
+* [[`a9b7a2bb5d`](https://github.com/wyze/babel-plugin-transform-react-stateless-component-name/commit/a9b7a2bb5d)] - Reformat changelog (Neil Kistner)
+* [[`10e83bd90c`](https://github.com/wyze/babel-plugin-transform-react-stateless-component-name/commit/10e83bd90c)] - Fix isDisplayName to not error on non-AssignmentExpression statements (Neil Kistner)
 
+### [v1.1.0](https://github.com/wyze/babel-plugin-transform-react-stateless-component-name/releases/tag/v1.1.0) (2016-12-11)
 
-<a name="1.1.0"></a>
-# 1.1.0 (2016-12-11)
+* [[`520858f091`](https://github.com/wyze/babel-plugin-transform-react-stateless-component-name/commit/520858f091)] - Add note about setting displayName for snapshot testing (Neil Kistner)
+* [[`1199c11de9`](https://github.com/wyze/babel-plugin-transform-react-stateless-component-name/commit/1199c11de9)] - Add fix when displayName is set on default export function declaration (Neil Kistner)
+* [[`c7888b2c5b`](https://github.com/wyze/babel-plugin-transform-react-stateless-component-name/commit/c7888b2c5b)] - Meta file updates (Neil Kistner)
+* [[`c01093c88e`](https://github.com/wyze/babel-plugin-transform-react-stateless-component-name/commit/c01093c88e)] - Use codecov bash uploader (Neil Kistner)
+* [[`282ecfcc2c`](https://github.com/wyze/babel-plugin-transform-react-stateless-component-name/commit/282ecfcc2c)] - Add yarn.lock (Neil Kistner)
+* [[`a676b77441`](https://github.com/wyze/babel-plugin-transform-react-stateless-component-name/commit/a676b77441)] - Add Flow (Neil Kistner)
+* [[`0975c41618`](https://github.com/wyze/babel-plugin-transform-react-stateless-component-name/commit/0975c41618)] - Add support for FunctionDeclaration as default export (Neil Kistner)
+* [[`c0902d2f17`](https://github.com/wyze/babel-plugin-transform-react-stateless-component-name/commit/c0902d2f17)] - Move helper functions out into their own files (Neil Kistner)
+* [[`e1bfe3419b`](https://github.com/wyze/babel-plugin-transform-react-stateless-component-name/commit/e1bfe3419b)] - Refactor doesReturnJSX to support recursion for nested returns (Neil Kistner)
+* [[`33db84e159`](https://github.com/wyze/babel-plugin-transform-react-stateless-component-name/commit/33db84e159)] - Move tests to be in same order of fixtures (Neil Kistner)
+* [[`125131f8b5`](https://github.com/wyze/babel-plugin-transform-react-stateless-component-name/commit/125131f8b5)] - Add more edge cases around if/else in default export (Neil Kistner)
+* [[`c1700c00f8`](https://github.com/wyze/babel-plugin-transform-react-stateless-component-name/commit/c1700c00f8)] - Ignore displayName when set on default export (Neil Kistner)
+* [[`1f1980de66`](https://github.com/wyze/babel-plugin-transform-react-stateless-component-name/commit/1f1980de66)] - Protect against displayName property being set twice (Neil Kistner)
+* [[`cf79b9d3db`](https://github.com/wyze/babel-plugin-transform-react-stateless-component-name/commit/cf79b9d3db)] - Insert expression so it adds the semicolon (Neil Kistner)
+* [[`dda83bcbc4`](https://github.com/wyze/babel-plugin-transform-react-stateless-component-name/commit/dda83bcbc4)] - Add displayName property to assigned functional components (Neil Kistner)
+* [[`abec2993c3`](https://github.com/wyze/babel-plugin-transform-react-stateless-component-name/commit/abec2993c3)] - Refactor to use babel-types properly and add snapshot tests (Neil Kistner)
 
-* Add displayName property to assigned functional components ([dda83bc](https://github.com/wyze/babel-plugin-transform-react-stateless-component-name/commit/dda83bc)), closes [#1](https://github.com/wyze/babel-plugin-transform-react-stateless-component-name/issues/1)
-* Add fix when displayName is set on default export function declaration ([1199c11](https://github.com/wyze/babel-plugin-transform-react-stateless-component-name/commit/1199c11))
-* Add Flow ([a676b77](https://github.com/wyze/babel-plugin-transform-react-stateless-component-name/commit/a676b77))
-* Add more edge cases around if/else in default export ([125131f](https://github.com/wyze/babel-plugin-transform-react-stateless-component-name/commit/125131f))
-* Add note about setting displayName for snapshot testing ([520858f](https://github.com/wyze/babel-plugin-transform-react-stateless-component-name/commit/520858f))
-* Add support for FunctionDeclaration as default export ([0975c41](https://github.com/wyze/babel-plugin-transform-react-stateless-component-name/commit/0975c41))
-* Add yarn.lock ([282ecfc](https://github.com/wyze/babel-plugin-transform-react-stateless-component-name/commit/282ecfc))
-* Ignore displayName when set on default export ([c1700c0](https://github.com/wyze/babel-plugin-transform-react-stateless-component-name/commit/c1700c0))
-* Insert expression so it adds the semicolon ([cf79b9d](https://github.com/wyze/babel-plugin-transform-react-stateless-component-name/commit/cf79b9d))
-* Meta file updates ([c7888b2](https://github.com/wyze/babel-plugin-transform-react-stateless-component-name/commit/c7888b2))
-* Move helper functions out into their own files ([c0902d2](https://github.com/wyze/babel-plugin-transform-react-stateless-component-name/commit/c0902d2))
-* Move tests to be in same order of fixtures ([33db84e](https://github.com/wyze/babel-plugin-transform-react-stateless-component-name/commit/33db84e))
-* Protect against displayName property being set twice ([1f1980d](https://github.com/wyze/babel-plugin-transform-react-stateless-component-name/commit/1f1980d))
-* Refactor doesReturnJSX to support recursion for nested returns ([e1bfe34](https://github.com/wyze/babel-plugin-transform-react-stateless-component-name/commit/e1bfe34))
-* Refactor to use babel-types properly and add snapshot tests ([abec299](https://github.com/wyze/babel-plugin-transform-react-stateless-component-name/commit/abec299))
-* Use codecov bash uploader ([c01093c](https://github.com/wyze/babel-plugin-transform-react-stateless-component-name/commit/c01093c))
+### [v1.0.2](https://github.com/wyze/babel-plugin-transform-react-stateless-component-name/releases/tag/v1.0.2) (2016-11-26)
 
+* [[`be0400fd22`](https://github.com/wyze/babel-plugin-transform-react-stateless-component-name/commit/be0400fd22)] - Update meta files (Neil Kistner)
+* [[`fd4382338d`](https://github.com/wyze/babel-plugin-transform-react-stateless-component-name/commit/fd4382338d)] - Upgrade dependencies and test process (Neil Kistner)
+* [[`25504b6803`](https://github.com/wyze/babel-plugin-transform-react-stateless-component-name/commit/25504b6803)] - Fix when body.body (block) is undefined (Neil Kistner)
 
+### [v1.0.1](https://github.com/wyze/babel-plugin-transform-react-stateless-component-name/releases/tag/v1.0.1) (2016-07-16)
 
-<a name="1.0.2"></a>
-# 1.0.2 (2016-11-26)
+* [[`b47575c24e`](https://github.com/wyze/babel-plugin-transform-react-stateless-component-name/commit/b47575c24e)] - Add missing `babel-register` devDependency (Neil Kistner)
+* [[`06fea17d4d`](https://github.com/wyze/babel-plugin-transform-react-stateless-component-name/commit/06fea17d4d)] - Don't assume last statement is a ReturnStatement (Neil Kistner)
+* [[`a8a8060dee`](https://github.com/wyze/babel-plugin-transform-react-stateless-component-name/commit/a8a8060dee)] - Meta updates (Neil Kistner)
+* [[`5da0958c8f`](https://github.com/wyze/babel-plugin-transform-react-stateless-component-name/commit/5da0958c8f)] - Upgrade dependencies and updates to pass new lint rules (Neil Kistner)
 
-* Fix when body.body (block) is undefined ([25504b6](https://github.com/wyze/babel-plugin-transform-react-stateless-component-name/commit/25504b6)), closes [#4](https://github.com/wyze/babel-plugin-transform-react-stateless-component-name/issues/4)
-* Update meta files ([be0400f](https://github.com/wyze/babel-plugin-transform-react-stateless-component-name/commit/be0400f))
-* Upgrade dependencies and test process ([fd43823](https://github.com/wyze/babel-plugin-transform-react-stateless-component-name/commit/fd43823))
+### [v1.0.0](https://github.com/wyze/babel-plugin-transform-react-stateless-component-name/releases/tag/v1.0.0) (2016-07-16)
 
-
-
-<a name="1.0.1"></a>
-# 1.0.1 (2016-07-17)
-
-* Add missing `babel-register` devDependency ([b47575c](https://github.com/wyze/babel-plugin-transform-react-stateless-component-name/commit/b47575c))
-* Don't assume last statement is a ReturnStatement ([06fea17](https://github.com/wyze/babel-plugin-transform-react-stateless-component-name/commit/06fea17)), closes [#3](https://github.com/wyze/babel-plugin-transform-react-stateless-component-name/issues/3)
-* Meta updates ([a8a8060](https://github.com/wyze/babel-plugin-transform-react-stateless-component-name/commit/a8a8060))
-* Upgrade dependencies and updates to pass new lint rules ([5da0958](https://github.com/wyze/babel-plugin-transform-react-stateless-component-name/commit/5da0958))
-
-
-
-<a name="1.0.0"></a>
-# 1.0.0 (2015-11-14)
-
-* Add Codecov badge to readme ([a9c5b6f](https://github.com/wyze/babel-plugin-transform-react-stateless-component-name/commit/a9c5b6f))
-* Initial commit ([36e9d99](https://github.com/wyze/babel-plugin-transform-react-stateless-component-name/commit/36e9d99))
+* [[`a9c5b6fedc`](https://github.com/wyze/babel-plugin-transform-react-stateless-component-name/commit/a9c5b6fedc)] - Add Codecov badge to readme (Neil Kistner)
+* [[`36e9d99a9d`](https://github.com/wyze/babel-plugin-transform-react-stateless-component-name/commit/36e9d99a9d)] - Initial commit (Neil Kistner)

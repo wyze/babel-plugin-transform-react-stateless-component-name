@@ -78,6 +78,16 @@ require('babel-core').transform('code', {
 })
 ```
 
+## Change Log
+
+> [Full Change Log](changelog.md)
+
+### [v1.1.1](https://github.com/wyze/babel-plugin-transform-react-stateless-component-name/releases/tag/v1.1.1) (2017-11-07)
+
+* [[`a853f804b1`](https://github.com/wyze/babel-plugin-transform-react-stateless-component-name/commit/a853f804b1)] - Remove all istanbul ignores (#10) (Thomas Grainger)
+* [[`e875edd575`](https://github.com/wyze/babel-plugin-transform-react-stateless-component-name/commit/e875edd575)] - Avoid crash on block-arrow components with hoc wrapper (#9) (Thomas Grainger)
+* [[`e98586fe5a`](https://github.com/wyze/babel-plugin-transform-react-stateless-component-name/commit/e98586fe5a)] - Ignore JSX Expression blocks (#7) (Daniel J)
+
 ## License
 
 Copyright © 2015-2016 [Neil Kistner](//github.com/wyze)

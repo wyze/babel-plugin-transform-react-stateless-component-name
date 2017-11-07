@@ -20,7 +20,8 @@
     "test": "NODE_ENV=test nyc npm run test:only",
     "test:cover": "nyc report -r text-lcov > codecov.lcov",
     "test:only": "ava",
-    "test:watch": "npm run test:only -- --watch"
+    "test:watch": "npm run test:only -- --watch",
+    "version": "write-changelog"
   },
   "main": "lib/index",
   "files": [
@@ -87,6 +88,7 @@
     "eslint-plugin-wyze": "^2.0.0",
     "flow-bin": "^0.36.0",
     "nyc": "^10.0.0",
-    "rimraf": "^2.5.4"
+    "rimraf": "^2.5.4",
+    "write-changelog": "^1.1.0"
   }
 }
