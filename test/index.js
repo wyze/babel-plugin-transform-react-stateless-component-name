@@ -162,3 +162,9 @@ test(
   snapshotMacro,
   'ignore-jsx-expression-blocks',
 )
+
+test(
+  'does not crash on block-arrow components with hoc wrapper',
+  snapshotMacro,
+  'export-default-hoc-block-arrow',
+)
