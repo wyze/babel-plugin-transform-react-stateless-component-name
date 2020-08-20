@@ -74,7 +74,7 @@ export default ({ types: t }: { types: BabelTypes }): Visitor => ({
       const { parentPath: parent } = path
 
       // avoids traversing assigning jsx to variable
-      if ( !parent.isReturnStatement() ) {
+      if ( !parent || !parent.isReturnStatement() ) {
         return
       }
 
