@@ -21,7 +21,10 @@ var App = function App() {
   );
 };
 
-App.displayName = \'App\';
+try {
+  App.displayName = \'App\';
+} catch (_) {}
+
 exports.default = App;"
 `;
 
@@ -192,7 +195,10 @@ var HelloWorld = function HelloWorld() {
   );
 };
 
-HelloWorld.displayName = \'HelloWorld\';
+try {
+  HelloWorld.displayName = \'HelloWorld\';
+} catch (_) {}
+
 exports.default = HelloWorld;"
 `;
 
@@ -354,7 +360,10 @@ var App = function App(_ref) {
     );
 };
 
-App.displayName = \'App\';
+try {
+    App.displayName = \'App\';
+} catch (_) {}
+
 exports.default = (0, _reactIntl.injectIntl)(App);"
 `;
 
@@ -379,7 +388,10 @@ var exportDefaultFromIndexjs = function exportDefaultFromIndexjs() {
   );
 };
 
-exportDefaultFromIndexjs.displayName = \'exportDefaultFromIndexjs\';
+try {
+  exportDefaultFromIndexjs.displayName = \'exportDefaultFromIndexjs\';
+} catch (_) {}
+
 exports.default = exportDefaultFromIndexjs;"
 `;
 
@@ -412,7 +424,10 @@ var App = function App() {
   }
 };
 
-App.displayName = \'App\';
+try {
+  App.displayName = \'App\';
+} catch (_) {}
+
 exports.default = App;"
 `;
 
@@ -437,7 +452,10 @@ var HelloWorld = function HelloWorld() {
   );
 };
 
-HelloWorld.displayName = \'HelloWorld\';
+try {
+  HelloWorld.displayName = \'HelloWorld\';
+} catch (_) {}
+
 exports.default = HelloWorld;"
 `;
 
@@ -464,7 +482,10 @@ var HelloWorld = function HelloWorld() {
   );
 };
 
-HelloWorld.displayName = \'HelloWorld\';
+try {
+  HelloWorld.displayName = \'HelloWorld\';
+} catch (_) {}
+
 exports.default = HelloWorld;"
 `;
 
@@ -489,7 +510,10 @@ var App = function App() {
   );
 };
 
-App.displayName = \'App\';
+try {
+  App.displayName = \'App\';
+} catch (_) {}
+
 exports.default = App;"
 `;
 
@@ -514,7 +538,10 @@ var HelloWorld = exports.HelloWorld = function HelloWorld() {
     \'Hello!\'
   );
 };
-HelloWorld.displayName = \'HelloWorld\';"
+
+try {
+  HelloWorld.displayName = \'HelloWorld\';
+} catch (_) {}"
 `;
 
 exports[`sets displayName for named export functional component with block 1`] = `
@@ -540,7 +567,10 @@ var HelloWorld = exports.HelloWorld = function HelloWorld() {
     message
   );
 };
-HelloWorld.displayName = \'HelloWorld\';"
+
+try {
+  HelloWorld.displayName = \'HelloWorld\';
+} catch (_) {}"
 `;
 
 exports[`sets displayName when if/else block returns JSX 1`] = `
@@ -574,7 +604,10 @@ var App = function App() {
   }
 };
 
-App.displayName = \'App\';
+try {
+  App.displayName = \'App\';
+} catch (_) {}
+
 exports.default = App;"
 `;
 
@@ -605,7 +638,10 @@ var App = function App() {
   );
 };
 
-App.displayName = \'App\';
+try {
+  App.displayName = \'App\';
+} catch (_) {}
+
 exports.default = App;"
 `;
 
@@ -630,7 +666,10 @@ var App = function App() {
   );
 };
 
-App.displayName = \'App\';
+try {
+  App.displayName = \'App\';
+} catch (_) {}
+
 exports.default = App;"
 `;
 
@@ -655,7 +694,10 @@ var App = function App() {
   );
 };
 
-App.displayName = \'App\';
+try {
+  App.displayName = \'App\';
+} catch (_) {}
+
 exports.default = App;"
 `;
 

@@ -14,11 +14,11 @@ const doesReturnJSX = ( node: NodePath): boolean => {
   if ( node.isBlockStatement() ) {
     const block: NodePath = [ ...node.get('body') ].pop()
 
-    if ( block.isReturnStatement() ) {
+    if ( block && block.isReturnStatement() ) {
       return doesReturnJSX(block.get('argument'))
     }
 
-    if ( block.isIfStatement() ) {
+    if ( block && block.isIfStatement() ) {
       const alternate: NodePath = block.get('alternate')
       const consequent: NodePath = block.get('consequent')
 
